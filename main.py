@@ -310,7 +310,14 @@ async def willy(ctx):
 @bot.command(hidden=True)
 async def raud(ctx):
     """raud"""
-    await ctx.send(file=discord.File('audio/Sussy Raud.mp3'))
+    await ctx.send(file=discord.File('audio/Sussy_Raud.mp3'))
+
+
+#roshen
+@bot.command(hidden=True)
+async def roshen(ctx):
+    """roshen"""
+    await ctx.send(file=discord.File('audio/Sussy_Roshen.mp3'))
 
 
 #negus
@@ -367,7 +374,7 @@ async def willyvc(ctx):
 
 
 @bot.command(hidden=True)
-async def oops(ctx):
+async def raudvc(ctx):
     # grab the user who sent the command
     inVc = True
     try:
@@ -377,7 +384,30 @@ async def oops(ctx):
     if inVc != False:
       vc = await voice_channel.connect()
       await asyncio.sleep(1)
-      vc.play(discord.FFmpegPCMAudio('audio/oops.mp3'), after=lambda e: print('done', e))
+      vc.play(discord.FFmpegPCMAudio('audio/Sussy_Raud.mp3'), after=lambda e: print())
+      # Sleep while audio is playing.
+      while vc.is_playing():
+        await asyncio.sleep(.1)
+      await asyncio.sleep(1)
+      await vc.disconnect()
+    else:
+      await ctx.send(str(ctx.author.name) + " is not in a channel.")
+    # Delete command after the audio is done playing.
+    await ctx.message.delete()
+
+
+@bot.command(hidden=True)
+async def roshenvc(ctx):
+    # grab the user who sent the command
+    inVc = True
+    try:
+      voice_channel = ctx.author.voice.channel
+    except:
+      inVc = False
+    if inVc != False:
+      vc = await voice_channel.connect()
+      await asyncio.sleep(1)
+      vc.play(discord.FFmpegPCMAudio('audio/Sussy_Roshen.mp3'), after=lambda e: print())
       # Sleep while audio is playing.
       while vc.is_playing():
         await asyncio.sleep(.1)
@@ -400,7 +430,7 @@ async def rickroll(ctx):
     if inVc != False:
       vc = await voice_channel.connect()
       await asyncio.sleep(1)
-      vc.play(discord.FFmpegPCMAudio('audio/song.mp3'), after=lambda e: print('done', e))
+      vc.play(discord.FFmpegPCMAudio('audio/song.mp3'), after=lambda e: print())
       # Sleep while audio is playing.
       while vc.is_playing():
         await asyncio.sleep(.1)
@@ -410,6 +440,30 @@ async def rickroll(ctx):
       await ctx.send(str(ctx.author.name) + " is not in a channel.")
     # Delete command after the audio is done playing.
     await ctx.message.delete()
+
+
+@bot.command(hidden=True)
+async def oops(ctx):
+    # grab the user who sent the command
+    inVc = True
+    try:
+      voice_channel = ctx.author.voice.channel
+    except:
+      inVc = False
+    if inVc != False:
+      vc = await voice_channel.connect()
+      await asyncio.sleep(1)
+      vc.play(discord.FFmpegPCMAudio('audio/oops.mp3'), after=lambda e: print('done', e))
+      # Sleep while audio is playing.
+      while vc.is_playing():
+        await asyncio.sleep(.1)
+      await asyncio.sleep(1)
+      await vc.disconnect()
+    else:
+      await ctx.send(str(ctx.author.name) + " is not in a channel.")
+    # Delete command after the audio is done playing.
+    await ctx.message.delete()
+
 
 #saddam
 @bot.command(hidden=True)
@@ -468,25 +522,9 @@ async def quiz(ctx):
 
 
 @bot.command(hidden=True)
-async def test(ctx):
-    # grab the user who sent the command
-    inVc = True
-    try:
-      voice_channel = ctx.author.voice.channel
-    except:
-      inVc = False
-    if inVc != False:
-      vc = await voice_channel.connect()
-      vc.volume = 10 / 100
-      vc.play(discord.FFmpegPCMAudio('https://www.youtube.com/watch?v=dQw4w9WgXcQ'), after=lambda e: print('done', e))
-      # Sleep while audio is playing.
-      while vc.is_playing():
-        await asyncio.sleep(.1)
-      await vc.disconnect()
-    else:
-      await ctx.send(str(ctx.author.name) + " is not in a channel.")
-    # Delete command after the audio is done playing.
-    await ctx.message.delete()
+async def zhongli(ctx):
+    """"""
+    await ctx.send("https://media.discordapp.net/attachments/806784778312744962/807979919392899113/IMG_0851.JPG?width=936&height=702")
 
 @bot.command()
 async def play(ctx, url : str):
