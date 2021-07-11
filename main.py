@@ -18,6 +18,7 @@ import discord
 from discord.ext import commands
 from keep_alive import keep_alive     #Creates a webserver that allows pings from UptimeRobot to prevent zeonbot from stoping
 
+print("Starting...")
 TOKEN = os.getenv('TOKEN')
 zeonid = int(os.getenv('OWNERID'))
 botid = 806908019291717702
@@ -329,10 +330,12 @@ async def negusvc(ctx):
       inVc = False
     if inVc != False:
       vc = await voice_channel.connect()
+      await asyncio.sleep(1)
       vc.play(discord.FFmpegPCMAudio('audio/negus.mp3'), after=lambda e: print('done', e))
       # Sleep while audio is playing.
       while vc.is_playing():
         await asyncio.sleep(.1)
+      await asyncio.sleep(1)
       await vc.disconnect()
     else:
       await ctx.send(str(ctx.author.name) + " is not in a channel.")
@@ -350,16 +353,63 @@ async def willyvc(ctx):
       inVc = False
     if inVc != False:
       vc = await voice_channel.connect()
-      vc.play(discord.FFmpegPCMAudio('audio/willy.mp3'), after=lambda e: print('done', e))
+      await asyncio.sleep(1)
+      vc.play(discord.FFmpegPCMAudio('audio/willy.mp3'), after=lambda e: print())
       # Sleep while audio is playing.
       while vc.is_playing():
         await asyncio.sleep(.1)
+      await asyncio.sleep(1)
       await vc.disconnect()
     else:
       await ctx.send(str(ctx.author.name) + " is not in a channel.")
     # Delete command after the audio is done playing.
     await ctx.message.delete()
 
+
+@bot.command(hidden=True)
+async def oops(ctx):
+    # grab the user who sent the command
+    inVc = True
+    try:
+      voice_channel = ctx.author.voice.channel
+    except:
+      inVc = False
+    if inVc != False:
+      vc = await voice_channel.connect()
+      await asyncio.sleep(1)
+      vc.play(discord.FFmpegPCMAudio('audio/oops.mp3'), after=lambda e: print('done', e))
+      # Sleep while audio is playing.
+      while vc.is_playing():
+        await asyncio.sleep(.1)
+      await asyncio.sleep(1)
+      await vc.disconnect()
+    else:
+      await ctx.send(str(ctx.author.name) + " is not in a channel.")
+    # Delete command after the audio is done playing.
+    await ctx.message.delete()
+
+
+@bot.command(hidden=True)
+async def rickroll(ctx):
+    # grab the user who sent the command
+    inVc = True
+    try:
+      voice_channel = ctx.author.voice.channel
+    except:
+      inVc = False
+    if inVc != False:
+      vc = await voice_channel.connect()
+      await asyncio.sleep(1)
+      vc.play(discord.FFmpegPCMAudio('audio/song.mp3'), after=lambda e: print('done', e))
+      # Sleep while audio is playing.
+      while vc.is_playing():
+        await asyncio.sleep(.1)
+      await asyncio.sleep(1)
+      await vc.disconnect()
+    else:
+      await ctx.send(str(ctx.author.name) + " is not in a channel.")
+    # Delete command after the audio is done playing.
+    await ctx.message.delete()
 
 #saddam
 @bot.command(hidden=True)
